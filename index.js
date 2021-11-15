@@ -8,27 +8,6 @@ const flash = require('connect-flash')
 const isLoggedIn = require('./middleware/isLoggedIn')
 const axios = require('axios').default;
 
-var options = {
-  method: 'GET',
-  url: 'https://resy.p.rapidapi.com/find/dc?date=2021-11-12&seats=2',
-  params: {
-    lat: '37.788719679657554',
-    long: '-122.40057774847898',
-    day: '2021-02-14',
-    party_size: '2',
-    offset: '0'
-  },
-  headers: {
-    'x-rapidapi-host': 'resy.p.rapidapi.com',
-    'x-rapidapi-key': '5c3ad2845dmsh16d001ac3488d6bp1d9d8bjsneaaa1aaeec06'
-  }
-};
-
-axios.request(options).then(function (response) {
-	console.log(response.data);
-}).catch(function (error) {
-	console.error(error);
-});
 
 
 // views (ejs and layouts) set up

@@ -17,6 +17,9 @@ module.exports = {
       ingredients: {
         type: Sequelize.TEXT
       },
+      method: {
+        type: Sequelize.TEXT
+      },
       userId: {
         type: Sequelize.INTEGER
       },

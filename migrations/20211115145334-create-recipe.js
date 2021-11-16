@@ -11,8 +11,17 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
+      story: {
+        type: Sequelize.TEXT
+      },
       difficulty: {
         type: Sequelize.STRING
+      },
+      cooktime: {
+        type: Sequelize.INTEGER
+      },
+      preptime: {
+        type: Sequelize.INTEGER
       },
       ingredients: {
         type: Sequelize.TEXT
@@ -24,9 +33,6 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       collectionId: {
-        type: Sequelize.INTEGER
-      },
-      storyId: {
         type: Sequelize.INTEGER
       },
       createdAt: {

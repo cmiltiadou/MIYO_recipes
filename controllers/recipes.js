@@ -21,8 +21,11 @@ router.post('/', (req, res) => {
         user.createRecipe({
         name: req.body.name,
         difficulty: req.body.difficulty,
+        preptime: req.body.preptime,
+        cooktime: req.body.cooktime,
         ingredients: req.body.ingredients,
         method: req.body.method,
+        story: req.body.story
     })
     .then((post) => {
       res.redirect('recipes/new')
@@ -42,7 +45,10 @@ router.get('/:id', (req, res) => {
             name: recipe.name,
             difficulty: recipe.difficulty,
             ingredients: recipe.ingredients,
-            method: recipe.method
+            method: recipe.method,
+            story: recipe.story, 
+            preptime: recipe.preptime,
+            cooktime: recipe.cooktime
         })
     })
     .catch (error => {

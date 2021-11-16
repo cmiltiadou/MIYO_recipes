@@ -1,17 +1,25 @@
 <% const ingredientsArray = ingredients.split(",") %>
 
+<div class="content is-normal">
+    <h1>
+        <%= name %>
+    </h1>
+    <div class="tags has-addons">
+        <span class="tag"> difficulty </span>
+        <span class="tag is-primary"> <%= difficulty %> </span>
+    </div>
+    <p>
+        <%= story %> 
+    </p>
 
-<h1>
-    <%= name %> 
-</h1>
-<h3>
-    <%= difficulty %> 
-</h3>
-<ul>
-    <% ingredientsArray.forEach((ingredient) =>{ %>
-        <li><%= ingredient %></li>
-   <% }) %> 
-</ul>
-<p>
-    <%= method %> 
-</p>
+    <h3>Ingredients:</h3>
+    <ul>
+        <% ingredientsArray.forEach((ingredient) =>{ %>
+            <li><%= ingredient %></li>
+       <% }) %> 
+    </ul>
+    <h4>Method:</h4>
+    <p>
+        <%= method %> 
+    </p>
+</div>

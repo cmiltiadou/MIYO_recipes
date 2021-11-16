@@ -32,9 +32,40 @@ router.post('/', (req, res) => {
     })
 })})
 
+// SHOW ROUTE to show individual recipe
+router.get('/:id', (req, res) => {
+    db.recipe.findOne({
+        where: {id: req.params.id}
+    })
+    .then (recipe => {
+        res.render('recipes/show', {
+            name: recipe.name,
+            difficulty: recipe.difficulty,
+            ingredients: recipe.ingredients,
+            method: recipe.method
+        })
+    })
+    .catch (error => {
+        console.error
+    })
+})
+
+/// create DELETE ROUTE to delete recipes 
+router.delete('/:id', (req, res) => {
+    // console.log('this is the id\n', req.params.id)
+    db.recipe.destroy({
+        where: {id: req.params.id}
+    })
+    .then(deletedRecipe =>{
+        // console.log('you deleted:', deletedItem)
+        res.redirect('/')
+    })
+    .catch(error =>{
+        console.error
+    })
+})
 
 
 
 
-
-  module.exports = router
+module.exports = router

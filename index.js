@@ -6,6 +6,7 @@ const session = require('express-session')
 const passport = require('./config/ppConfig')
 const flash = require('connect-flash')
 const isLoggedIn = require('./middleware/isLoggedIn')
+const methodOverride = require('method-override')
 const axios = require('axios').default;
 const db = require('./models')
 
@@ -18,6 +19,9 @@ app.use(ejsLayouts)
 
 // body parser middelware
 app.use(express.urlencoded({extended:false}))
+
+//method override to delete 
+app.use(methodOverride('_method')) 
 
 // session middleware
 app.use(session({
@@ -63,6 +67,8 @@ app.get('/profile/:id', isLoggedIn, (req, res)=>{
         res.status(400).render('main/404')
     })
 })
+
+
 
 
 app.listen(3000, ()=>{

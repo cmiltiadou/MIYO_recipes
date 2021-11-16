@@ -19,7 +19,8 @@
     </header>
     <footer class="card-footer">
         <a href="#" class="card-footer-item">Edit</a>
-        <a href="/recipes/<%= recipe.id %>?_method=DELETE" class="card-footer-item" method="POST">Delete</a>
+        <form action="/recipes/<%= recipe.id %>?_method=DELETE " method="POST" class="card-footer-item"><button type=submit>Delete</button>
+        </form>
       </footer>
   </div>
 <% }) %>

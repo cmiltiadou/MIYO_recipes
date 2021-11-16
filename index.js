@@ -7,6 +7,8 @@ const passport = require('./config/ppConfig')
 const flash = require('connect-flash')
 const isLoggedIn = require('./middleware/isLoggedIn')
 const axios = require('axios').default;
+const db = require('./models')
+
 
 
 
@@ -41,6 +43,7 @@ app.use((req, res, next) => {
 
 // controllers middleware 
 app.use('/auth', require('./controllers/auth'))
+app.use('/recipes', isLoggedIn, require('./controllers/recipes'))
 
 
 // home route
@@ -49,8 +52,16 @@ app.get('/', (req, res)=>{
 })
 
 // profile route
-app.get('/profile', isLoggedIn, (req, res)=>{
-    res.render('profile')
+app.get('/profile/:id', isLoggedIn, (req, res)=>{
+    db.recipe.findAll({
+        include: [db.user],
+        where: {userId: req.params.id},
+    }).then((recipes) =>{
+        res.render('profile', {recipes: recipes})
+    }).catch((error)=>{
+        console.log(error)
+        res.status(400).render('main/404')
+    })
 })
 
 

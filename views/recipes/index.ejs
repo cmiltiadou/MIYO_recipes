@@ -1,0 +1,17 @@
+<h1>Recipes</h1>
+
+<% recipes.forEach(function(recipes) { %>
+  <div class="well">
+    <h2>
+      <a href="/authors/<%= recipe.id %>">
+        <%= recipe.getName() %>
+      </a>
+    </h2>
+  </div>
+<% }) %>
+
+<a href="recipes/new">Add a recipe!</a>
+
+<hr />
+
+<a href="/">&larr; Back Home</a>

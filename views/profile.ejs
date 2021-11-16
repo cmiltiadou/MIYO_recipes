@@ -1,1 +1,31 @@
 <h2><%= currentUser.name %>'s Profile</h2>
+
+<h1 class="title" >Recipes</h1>
+
+<% recipes.forEach(function(recipe) { %>
+  <div class="card-header">
+  <div class="card">
+    <header class="card-header">
+      <p class="card-header-title">
+         <a href="/recipes/<%= recipe.id %>">
+        <%= recipe.name %>
+      </a>
+      </p>
+      <button class="card-header-icon" aria-label="more options">
+        <span class="icon">
+          <i class="fas fa-angle-down" aria-hidden="true"></i>
+        </span>
+      </button>
+    </header>
+    <footer class="card-footer">
+        <a href="#" class="card-footer-item">Edit</a>
+        <a href="/recipes/<%= recipe.id %>?_method=DELETE" class="card-footer-item" method="POST">Delete</a>
+      </footer>
+  </div>
+<% }) %>
+
+<a href="../recipes/new">Add a recipe!</a>
+
+<hr />
+
+<a href="/">&larr; Back Home</a>

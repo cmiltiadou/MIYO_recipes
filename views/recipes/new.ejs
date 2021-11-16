@@ -1,9 +1,10 @@
 <h1>Upload your recipe</h1>
 
+<div class="container is-max-desktop">
 <form action="/recipes" method="POST">
    
     <div class="form-group">
-        <label for="username">Username:</label>
+        <label for="username"></label>
         <input type="hidden" id="username" name="username" value="<%= currentUser.name %>" required>
       </div>
 
@@ -14,7 +15,7 @@
 
   <div class="form-group">
     <label for="difficulty">Difficulty Level</label>
-    <select class="form-control" id="difficulty" name="difficulty" required>
+    <select class="select is-small is-focused" id="difficulty" name="difficulty" required>
         <option value="easy">Easy</option>
         <option value="intermidiate">Intermidiate</option>
         <option value="hard">Hard</option>
@@ -23,12 +24,13 @@
 
   <div class="form-group">
     <label for="ingredients">Ingredients</label>
-    <textarea type="text" class="form-control" id="ingredients" name="ingredients" required></textarea>
+    <textarea type="text" class="textarea" id="ingredients" name="ingredients" placeholder="Ingredients: seperate each ingredient by a comma" required></textarea>
   </div>
   <div class="form-group">
     <label for="method">Method</label>
-    <textarea type="text" class="form-control" id="method" name="method" required></textarea>
+    <textarea type="text" class="textarea" id="method" name="method" required placeholder="Instructions"></textarea>
   </div>
 
   <input type="submit" class="btn btn-primary">
 </form>
+</div>

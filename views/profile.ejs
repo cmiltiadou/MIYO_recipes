@@ -2,6 +2,10 @@
 
 <h1 class="title" >Recipes</h1>
 
+<div class="container">
+<a href="../recipes/new">Add a recipe!</a>
+<a href="/">&larr; Back Home</a>
+</div>
 <% recipes.forEach(function(recipe) { %>
   <div class="card-header">
   <div class="card">
@@ -19,14 +23,8 @@
     </header>
     <footer class="card-footer">
         <a href="#" class="card-footer-item">Edit</a>
-        <form action="/recipes/<%= recipe.id %>?_method=DELETE " method="POST" class="card-footer-item"><button type=submit>Delete</button>
+        <form action="/recipes/<%= recipe.id %>?_method=DELETE " method="POST" class="card-footer-item" onsubmit=""><button type=submit>Delete</button>
         </form>
       </footer>
   </div>
 <% }) %>
-
-<a href="../recipes/new">Add a recipe!</a>
-
-<hr />
-
-<a href="/">&larr; Back Home</a>

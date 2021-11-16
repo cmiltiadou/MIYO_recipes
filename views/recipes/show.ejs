@@ -1,12 +1,17 @@
+<% const ingredientsArray = ingredients.split(",") %>
+
+
 <h1>
     <%= name %> 
 </h1>
 <h3>
     <%= difficulty %> 
 </h3>
-<p>
-    <%= ingredients %> 
-</p>
+<ul>
+    <% ingredientsArray.forEach((ingredient) =>{ %>
+        <li><%= ingredient %></li>
+   <% }) %> 
+</ul>
 <p>
     <%= method %> 
 </p>

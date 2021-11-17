@@ -2,6 +2,19 @@
 
 <div class="container is-max-desktop">
 <form action="/recipes" method="POST">
+
+    <div class="field">
+        <select class="select is-small is-focused" id="isRestaurant" name="isRestaurant" required>
+            <option value=false>Is this a Restuarant Recipe?</option>
+            <option value=true>Yes</option>
+            <option value=false>No</option>
+        </select>
+    </div>
+      
+    <div class="field">
+        <label for="restaurantName"></label>
+        <input type="text" class="input is-light" id="restaurantName" name="restaurantName" placeholder="Restaurant Name (optional)">
+      </div>
    
     <div class="field">
         <label for="username"></label>
@@ -13,6 +26,13 @@
           <label for="name"></label>
           <input type="text" class="input is-primary" id="name" name="name" required placeholder="Name of dish">
     </div>
+
+    <div class="field has-addons">
+        <label for="preptime"></label>
+        <input type="text" class="input is-primary is-small" id="preptime" name="preptime" required placeholder="Prep Time">
+        <label for="cooktime"></label>
+        <input type="text" class="input is-primary is-small" id="cooktime" name="cooktime" required placeholder="Cook Time">
+  </div>
     
     <div class="field">
       <label for="difficulty">Difficulty Level</label>
@@ -22,6 +42,8 @@
           <option value="hard">Hard</option>
       </select>
   </div>
+
+
 
     <div class="field">
       <label for="story">Story:</label>

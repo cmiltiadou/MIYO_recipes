@@ -60,18 +60,23 @@ Output:
 
 ## MVP GOALS
 
-1. Users can upload recipes and include a quick story on what makes this recipe special to them
+1. Users can upload recipes that include a quick story on what makes this recipe special to them
 
 2. Users create collections of their recipes (i.e. Grandmas Thanksgiving recipes) for easier sharing and organizing 
 
-3. Users can comment on individual recipes 
+3. Recipes that belong to a restaurant will display google places info using the google maps api. 
 
-4. Recipes are searchable
 
 ## STRETCH GOALS
+
+1. User will be able to find  
 
 1. Intergrate (or make) an ingredient parser so ingredients can be entered as strings and broken down into units and ingredients 
 
 2. Intergrate social media like features such as following an author, creating groups, and messaging 
+
+3. Users can comment on individual recipes 
+
+4. Recipes are searchable
 
 

@@ -18,16 +18,22 @@ module.exports = {
         type: Sequelize.STRING
       },
       cooktime: {
-        type: Sequelize.INTEGER
+        type: Sequelize.TEXT
       },
       preptime: {
-        type: Sequelize.INTEGER
+        type: Sequelize.TEXT
       },
       ingredients: {
         type: Sequelize.TEXT
       },
       method: {
         type: Sequelize.TEXT
+      },
+      isRestaurant: {
+        type: Sequelize.BOOLEAN
+      },
+      restaurantName: {
+        type: Sequelize.STRING
       },
       userId: {
         type: Sequelize.INTEGER

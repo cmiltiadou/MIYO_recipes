@@ -1,12 +1,20 @@
 <% const ingredientsArray = ingredients.split(",") %>
 
+
+
 <div class="content is-normal">
     <h1>
         <%= name %>
     </h1>
     <div class="tags has-addons">
-        <span class="tag"> difficulty </span>
-        <span class="tag is-primary"> <%= difficulty %> </span>
+        <span class="tag is-primary"> difficulty </span>
+        <span class="tag"> <%= difficulty %> </span>
+    </div>
+    <div class="tags has-addons">
+        <span class="tag is-primary"> Prep Time </span>
+        <span class="tag"> <%= preptime %> </span>
+        <span class="tag is-primary"> Cook Time </span>
+        <span class="tag"> <%= cooktime %> </span>
     </div>
     <p>
         <%= story %> 

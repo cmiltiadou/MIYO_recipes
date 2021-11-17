@@ -25,7 +25,9 @@ router.post('/', (req, res) => {
         cooktime: req.body.cooktime,
         ingredients: req.body.ingredients,
         method: req.body.method,
-        story: req.body.story
+        story: req.body.story,
+        isRestaurant: req.body.isRestaurant,
+        restaurantName: req.body.restaurantName
     })
     .then((post) => {
       res.redirect('recipes/new')
@@ -48,7 +50,9 @@ router.get('/:id', (req, res) => {
             method: recipe.method,
             story: recipe.story, 
             preptime: recipe.preptime,
-            cooktime: recipe.cooktime
+            cooktime: recipe.cooktime,
+            isRestaurant: recipe.isRestaurant,
+            restaurantName: recipe.restaurantName
         })
     })
     .catch (error => {

@@ -18,12 +18,14 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     story: DataTypes.TEXT,
     difficulty: DataTypes.STRING,
-    cooktime: DataTypes.INTEGER,
-    preptime: DataTypes.INTEGER,
+    cooktime: DataTypes.TEXT,
+    preptime: DataTypes.TEXT,
     ingredients: DataTypes.TEXT,
     method: DataTypes.TEXT,
     userId: DataTypes.INTEGER,
     collectionId: DataTypes.INTEGER,
+    isRestaurant: DataTypes.BOOLEAN,
+    restaurantName: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'recipe',

@@ -1,45 +1,46 @@
-<h2>Make It Your Own</h2>
+<h2>Find a recipe and Make It Your Own</h2>
 
 <h1>This weeks featured recipe:</h1>
 
 <% const ingredientsArray = ingredients.split(",") %>
 
 
+<div class="columns is-centered mt-6">
+    <div class="column is-four-fifths">
+        <div class="box">
+            <div class="content is-small">
+                <h1>
+                    <a href="/restaurant/<%= restaurantName %>"><%= restaurantName %></a>
+                </h1>
+                <h1>
+                    <%= name %>
+                </h1>
+                <div class="tags has-addons">
+                    <span class="tag is-primary"> difficulty </span>
+                    <span class="tag"> <%= difficulty %> </span>
+                </div>
+                <div class="tags has-addons">
+                    <span class="tag is-primary"> Prep Time </span>
+                    <span class="tag"> <%= preptime %> </span>
+                    <span class="tag is-primary"> Cook Time </span>
+                    <span class="tag"> <%= cooktime %> </span>
+                </div>
+                <p>
+                    <%= story %> 
+                </p>
 
-<div class="column is-one-third">
-    <div class="box">
-        <div class="content is-small">
-            <h1>
-                <a href="/restaurant/<%= restaurantName %>"><%= restaurantName %></a>
-            </h1>
-            <h1>
-                <%= name %>
-            </h1>
-            <div class="tags has-addons">
-                <span class="tag is-primary"> difficulty </span>
-                <span class="tag"> <%= difficulty %> </span>
+                <h3>Ingredients:</h3>
+                <ul>
+                    <% ingredientsArray.forEach((ingredient) =>{ %>
+                        <li><%= ingredient %></li>
+                   <% }) %> 
+                </ul>
+                <h4>Method:</h4>
+                <p>
+                    <%= method %> 
+                </p>
             </div>
-            <div class="tags has-addons">
-                <span class="tag is-primary"> Prep Time </span>
-                <span class="tag"> <%= preptime %> </span>
-                <span class="tag is-primary"> Cook Time </span>
-                <span class="tag"> <%= cooktime %> </span>
-            </div>
-            <p>
-                <%= story %> 
-            </p>
-
-            <h3>Ingredients:</h3>
-            <ul>
-                <% ingredientsArray.forEach((ingredient) =>{ %>
-                    <li><%= ingredient %></li>
-               <% }) %> 
-            </ul>
-            <h4>Method:</h4>
-            <p>
-                <%= method %> 
-            </p>
+            <button class="button is-primary is-rounded is-pulled-right" disabled >Make It Your Own</button>
         </div>
-        <button class="button is-primary is-rounded is-pulled-right" disabled >Make It Your Own</button>
     </div>
 </div>

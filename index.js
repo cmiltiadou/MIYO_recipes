@@ -12,7 +12,6 @@ const db = require('./models')
 const recipe = require('./models/recipe')
 
 
-
 // views (ejs and layouts) set up
 app.set('view engine', 'ejs')
 app.use(ejsLayouts)
@@ -91,22 +90,37 @@ app.get('/profile/:id', isLoggedIn, (req, res)=>{
 app.get('/restaurant/:restName',  (req, res)=>{
     let restaurantName = req.params.restName
 
-    axios.get(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=${restaurantName}&key=${process.env.MAPSAPIKEY}`)
+    let searchUrl = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${restaurantName}&key=${process.env.MAPSAPIKEY}`
+    // let photosUrl  = `https://maps.googleapis.com/maps/api/place/photo
+    // ?maxwidth=400&photo_reference=${photoRef}&key=${process.env.MAPSAPIKEY}`
+    axios.get(searchUrl)
       .then(apiRes => {
-        let name = apiRes.data.results[0].name
-        let address = apiRes.data.results[0].formatted_address
-        let priceLevel = apiRes.data.results[0].price_level
-        let rating = apiRes.data.results[0].rating
         let placeId = apiRes.data.results[0].place_id
 
-        // console.log(apiRes)
+        return axios.get(`https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&key=${process.env.MAPSAPIKEY}`)
+      })
+      .then(apiRes => {
+        let name = apiRes.data.result.name
+        let address = apiRes.data.result.formatted_address
+        let priceLevel = apiRes.data.result.price_level
+        let rating = apiRes.data.result.rating
+        let reviewsArray = apiRes.data.result.reviews
+
+        // console.log(apiRes.data.result)
         // console.log(name, address, priceLevel, rating)
-        res.render('restaurants/home', {name, address, priceLevel, rating})
+        console.log(reviewsArray)
+        res.render('restaurants/home', {name, address, priceLevel, rating, reviewsArray })
       })
     .catch((error)=>{
         console.log(error)
     })
 })
+
+
+
+    
+
+
 
 app.listen(3000, ()=>{
     console.log(process.env.SUPER_SECRET_SECRET)

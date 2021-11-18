@@ -1,4 +1,40 @@
-<h1><%= name %></h1>
-<h1><%= rating %>/5</h1>
-<h1><%= priceLevel %>/5</h1>
-<h1><%= address %></h1>
+
+
+
+<div class="columns is-centered">
+    <div class="column is-four-fifths">
+        <div class= "box">
+            <h1><%= name %></h1>
+            <h1><%= rating %>/5</h1>
+            <h1><%= priceLevel %>/5</h1>
+            <h1><%= address %></h1>
+            <p><a href="https://www.google.com/maps/place/<%= name %>">view on google Maps</a> 
+                
+        </div>
+    </div>
+</div>
+
+<div class="columns is-centered">
+    <div class="column is-four-fifths">
+        <% reviewsArray.forEach(function(review) { %>
+    <div class="box">
+    <article class="media">
+        <figure class="media-left">
+          <p class="image is-64x64">
+            <img src="<%= review.profile_photo_url%>">
+          </p>
+        </figure>
+        <div class="media-content">
+          <div class="content">
+            <p>
+              <strong><%= review.author_name %></strong>  <small><%= review.relative_time_description %></small>
+              <br>
+              <%= review.text %>
+            </p>
+          </div>
+        </div>
+      </article>
+    </div>
+      <% }) %>
+    </div>
+</div>

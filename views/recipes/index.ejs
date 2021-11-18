@@ -1,17 +1,22 @@
-<h1>Recipes</h1>
+<h1 class="title" >All Recipes</h1>
 
-<% recipes.forEach(function(recipes) { %>
-  <div class="well">
-    <h2>
-      <a href="/authors/<%= recipe.id %>">
-        <%= recipe.getName() %>
+<div class="container">
+<a href="../recipes/new">Add a recipe!</a>
+</div>
+<% recipes.forEach(function(recipe) { %>
+  <div class="card-header">
+  <div class="card">
+    <header class="card-header">
+      <p class="card-header-title">
+         <a href="/recipes/<%= recipe.id %>">
+        <%= recipe.name %>
       </a>
-    </h2>
+      </p>
+      <button class="card-header-icon" aria-label="more options">
+        <span class="icon">
+          <i class="fas fa-angle-down" aria-hidden="true"></i>
+        </span>
+      </button>
+    </header>
   </div>
 <% }) %>
-
-<a href="recipes/new">Add a recipe!</a>
-
-<hr />
-
-<a href="/">&larr; Back Home</a>

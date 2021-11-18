@@ -5,6 +5,14 @@ let recipe = require('../models/recipe')
 const axios = require('axios')
 const router = express.Router() 
 
+router.get('/all', (req, res)=>{
+    db.recipe.findAll()
+    .then((recipes) =>{
+        res.render('recipes/index', {recipes: recipes})
+    }).catch((error)=>{
+        res.status(400).render('main/404') 
+    })
+})
 
 router.get('/new', (req, res) => {
     db.recipe.findAll()

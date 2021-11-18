@@ -9,7 +9,7 @@ const isLoggedIn = require('./middleware/isLoggedIn')
 const methodOverride = require('method-override')
 const axios = require('axios').default;
 const db = require('./models')
-
+const recipe = require('./models/recipe')
 
 
 
@@ -50,16 +50,35 @@ app.use('/auth', require('./controllers/auth'))
 app.use('/recipes', isLoggedIn, require('./controllers/recipes'))
 
 
-// home route
+// home route // will display featured restaurant recipe and use Places API to pull up to date info on the restaurant
 app.get('/', (req, res)=>{
-    res.render('home')
+    db.recipe.findOne()
+    .then (recipe => {
+        res.render('home', {
+            name: recipe.name,
+            difficulty: recipe.difficulty,
+            ingredients: recipe.ingredients,
+            method: recipe.method,
+            story: recipe.story, 
+            preptime: recipe.preptime,
+            cooktime: recipe.cooktime,
+            isRestaurant: recipe.isRestaurant,
+            restaurantName: recipe.restaurantName
+        })
+    })
+      .catch(err => {
+        console.log(err)
+      })
 })
+    
+    
+
 
 // profile route
 app.get('/profile/:id', isLoggedIn, (req, res)=>{
     db.recipe.findAll({
         include: [db.user],
-        where: {userId: req.params.id},
+        where: {userId: req.user.id},
     }).then((recipes) =>{
         res.render('profile', {recipes: recipes})
     }).catch((error)=>{
@@ -68,8 +87,26 @@ app.get('/profile/:id', isLoggedIn, (req, res)=>{
     })
 })
 
+// restaurant route for gathering more info about a restaurant using google places API
+app.get('/restaurant/:restName',  (req, res)=>{
+    let restaurantName = req.params.restName
 
+    axios.get(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=${restaurantName}&key=${process.env.MAPSAPIKEY}`)
+      .then(apiRes => {
+        let name = apiRes.data.results[0].name
+        let address = apiRes.data.results[0].formatted_address
+        let priceLevel = apiRes.data.results[0].price_level
+        let rating = apiRes.data.results[0].rating
+        let placeId = apiRes.data.results[0].place_id
 
+        // console.log(apiRes)
+        // console.log(name, address, priceLevel, rating)
+        res.render('restaurants/home', {name, address, priceLevel, rating})
+      })
+    .catch((error)=>{
+        console.log(error)
+    })
+})
 
 app.listen(3000, ()=>{
     console.log(process.env.SUPER_SECRET_SECRET)

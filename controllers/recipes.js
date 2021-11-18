@@ -1,6 +1,8 @@
+require('dotenv').config()
 let express = require('express')
 let db = require('../models')
 let recipe = require('../models/recipe')
+const axios = require('axios')
 const router = express.Router() 
 
 
@@ -60,6 +62,7 @@ router.get('/:id', (req, res) => {
     })
 })
 
+
 /// create DELETE ROUTE to delete recipes 
 router.delete('/:id', (req, res) => {
     // console.log('this is the id\n', req.params.id)
@@ -74,8 +77,6 @@ router.delete('/:id', (req, res) => {
         console.error
     })
 })
-
-
 
 
 module.exports = router

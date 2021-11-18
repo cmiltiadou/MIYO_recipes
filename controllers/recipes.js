@@ -39,7 +39,7 @@ router.post('/', (req, res) => {
     })
 })})
 
-// SHOW ROUTE to show individual recipe
+//SHOW route to render a formatted version of a specific recipe 
 router.get('/:id', (req, res) => {
     db.recipe.findOne({
         where: {id: req.params.id}
@@ -61,6 +61,50 @@ router.get('/:id', (req, res) => {
         console.error
     })
 })
+// SHOW ROUTE to render edit form for recipe
+router.get('/edit/:id', (req, res) => {
+    db.recipe.findOne({
+        where: {id: req.params.id}
+    })
+    .then (recipe => {
+        res.render('recipes/edit', {
+            name: recipe.name,
+            ingredients: recipe.ingredients,
+            method: recipe.method,
+            story: recipe.story, 
+            preptime: recipe.preptime,
+            cooktime: recipe.cooktime,
+            recipeId: recipe.id
+        })
+    })
+    .catch (error => {
+        console.error
+    })
+})
+
+// PUT ROUTE to edit and UPDATE a recipe
+router.put('/edit/:id', (req, res) => {
+    let recipeId = req.params.id
+    db.recipe.findByPk(recipeId
+    )
+    .then (recipe => {
+        recipe.update({
+            name: req.body.name,
+            ingredients: req.body.ingredients,
+            method: req.body.method,
+            story: req.body.story, 
+            preptime: req.body.preptime,
+            cooktime: req.body.cooktime
+        })
+    .then(recipe =>{
+        res.redirect(`/recipes/${req.params.id}`)
+    })
+    })
+    .catch (error => {
+        console.error
+    })
+})
+
 
 
 /// create DELETE ROUTE to delete recipes 

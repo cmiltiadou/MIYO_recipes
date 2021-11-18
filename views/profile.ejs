@@ -22,7 +22,7 @@
       </button>
     </header>
     <footer class="card-footer">
-        <a href="/recipes/edit" class="card-footer-item">edit</a>
+        <a href="/recipes/edit/<%= recipe.id %>" class="card-footer-item">edit</a>
         <form action="/recipes/<%= recipe.id %>?_method=DELETE " method="POST" class="card-footer-item" onsubmit="">
             <input class="button is-danger" type="submit" value="delete">
         </form>

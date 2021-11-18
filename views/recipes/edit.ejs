@@ -1,0 +1,39 @@
+<h1>Edit you recipe:</h1>
+
+
+    <div class="container is-max-desktop">
+        <form action="/recipes/edit/<%= recipeId %>/?_method=PUT" method="POST">
+
+        <div class="field">
+              <label for="name"></label>
+              <input type="text" class="input is-primary" id="name" name="name" required value="<%= name %> ">
+        </div>
+    
+        <div class="field has-addons">
+            <label for="preptime"></label>
+            <input type="text" class="input is-primary is-small" id="preptime" name="preptime" required value="<%= preptime %>">
+            <label for="cooktime"></label>
+            <input type="text" class="input is-primary is-small" id="cooktime" name="cooktime" required value="<%= cooktime %>">
+      </div>
+    
+        <div class="field">
+          <label for="story">Story:</label>
+          <textarea class="textarea" id="story" name="story" required><%= story %></textarea>  
+        </div>
+        
+    
+      <div class="field">
+        <label for="ingredients">Ingredients:</label>
+        <textarea class="textarea" id="ingredients" name="ingredients" 
+         required><%= ingredients %></textarea>
+      </div>
+    
+      <div class="field">
+        <label for="method">Method:</label>
+        <textarea class="textarea" id="method" name="method" required 
+        ><%= method %></textarea>
+      </div>
+    
+      <input type="submit" class="button is-primary" value="Edit Recipe">
+    </form>
+    </div>

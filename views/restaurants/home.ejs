@@ -1,33 +1,73 @@
 
 
 
-<div class="columns is-centered">
+<div class="columns is-centered mt-6">
     <div class="column is-four-fifths">
         <div class= "box">
-            <h1><%= name %></h1>
-            <h1><%= rating %>/5</h1>
-            <h1><%= priceLevel %>/5</h1>
-            <h1><%= address %></h1>
-            <p><a href="https://www.google.com/maps/place/<%= name %>">view on google Maps</a> 
-                
+            <div class= "column is-full has-text-centered">
+                <div class="content is-large">
+                    <h1><%= name %></h1>
+                    
+                </div>
+            </div>
+
+            <div class= "columns is-gapless">
+                <div class= "column">
+                    <div class="content has-text-right">
+                        
+                    </div>
+                </div>
+            
+                <div class= "column has-text-centered">
+                    <div class="content">
+                        <a href="<%= placesUrl %>" target="_blank" rel="noopener noreferrer"><p><%= address %></p></a>
+
+                        <div class="tags has-addons mt-3 is-centered">
+                            <a href=<%= website%> target="_blank" rel="noopener noreferrer">
+                            <span class="tag is-primary is-light is-medium"> Visit Website </span> 
+                            </a>
+                            </div>
+
+                        <div class="tags has-addons mt-3 is-centered">
+                        <span class="tag is-primary is-medium">Google rating </span> 
+                        <span class="tag is-light is-medium has-text-primary-dark"> <%= rating %> &nbsp <small class="has-text-grey-light"> / 5</small></span>
+                        </div>
+                        <div class="tags has-addons mt-3 is-centered">
+                        <span class="tag is-primary is-medium">Price Level </span> 
+                        <span class="tag is-light is-medium has-text-primary-dark"><%= priceLevel %> &nbsp <small class="has-text-grey-light"> / 5</small>
+                        </span>
+                    </div>
+                    </div>
+                </div>
+           
+                <div class= "column">
+                    <div class="content has-text-justified ml-6">
+                        <% hours.forEach(function(hour) { %>
+                            <p><%= hour %> </p>  
+                        <% }) %>  
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
 <div class="columns is-centered">
-    <div class="column is-four-fifths">
+    <div class="column is-three-fifths has-background-white-ter">
         <% reviewsArray.forEach(function(review) { %>
     <div class="box">
     <article class="media">
         <figure class="media-left">
           <p class="image is-64x64">
-            <img src="<%= review.profile_photo_url%>">
+            <a href="<%= review.author_url %>" target="_blank" rel="noopener noreferrer"> 
+                <img src="<%= review.profile_photo_url %>"> </a>
           </p>
         </figure>
         <div class="media-content">
           <div class="content">
             <p>
-              <strong><%= review.author_name %></strong>  <small><%= review.relative_time_description %></small>
+              <strong><%= review.author_name %></strong>  <small><%= review.relative_time_description %></small> 
+              <span class="tag is-pulled-right has-background-success-light"><%= review.rating %> / 5</span>
               <br>
               <%= review.text %>
             </p>

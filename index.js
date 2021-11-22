@@ -91,8 +91,7 @@ app.get('/restaurant/:restName',  (req, res)=>{
     let restaurantName = req.params.restName
 
     let searchUrl = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${restaurantName}&key=${process.env.MAPSAPIKEY}`
-    // let photosUrl  = `https://maps.googleapis.com/maps/api/place/photo
-    // ?maxwidth=400&photo_reference=${photoRef}&key=${process.env.MAPSAPIKEY}`
+ 
     axios.get(searchUrl)
       .then(apiRes => {
         let placeId = apiRes.data.results[0].place_id
@@ -105,11 +104,14 @@ app.get('/restaurant/:restName',  (req, res)=>{
         let priceLevel = apiRes.data.result.price_level
         let rating = apiRes.data.result.rating
         let reviewsArray = apiRes.data.result.reviews
+        let hours = apiRes.data.result.opening_hours.weekday_text
+        let website = apiRes.data.result.website
+        let placesUrl = apiRes.data.result.url
 
         // console.log(apiRes.data.result)
         // console.log(name, address, priceLevel, rating)
-        console.log(reviewsArray)
-        res.render('restaurants/home', {name, address, priceLevel, rating, reviewsArray })
+        console.log(apiRes.data.result.opening_hours.weekday_text)
+        res.render('restaurants/home', {name, address, priceLevel, rating, reviewsArray, hours, website, placesUrl })
       })
     .catch((error)=>{
         console.log(error)
@@ -123,6 +125,5 @@ app.get('/restaurant/:restName',  (req, res)=>{
 
 
 app.listen(3000, ()=>{
-    console.log(process.env.SUPER_SECRET_SECRET)
     console.log("auth_practice running on port 3000")
 })

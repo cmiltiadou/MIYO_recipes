@@ -51,7 +51,7 @@ app.use('/recipes', isLoggedIn, require('./controllers/recipes'))
 
 // home route // will display featured restaurant recipe and use Places API to pull up to date info on the restaurant
 app.get('/', (req, res)=>{
-    db.recipe.findOne()
+    db.recipe.findOne({where: {isRestaurant: true}})
     .then (recipe => {
         res.render('home', {
             name: recipe.name,
@@ -117,11 +117,6 @@ app.get('/restaurant/:restName',  (req, res)=>{
         console.log(error)
     })
 })
-
-
-
-    
-
 
 
 app.listen(3000, ()=>{

@@ -4,10 +4,6 @@
 
 The "MIYO" in MIYO Recipes stands for 'Make It Your Own'. The idea being that users will be able to find user and restaurant uploaded recipes, add them to their own collection, but also edit and expand upon the originals. Think of it like forking and cloning a recipe and being able to submit your changes. The original recipe will always remain but will also be linked to any recipes tweaked by other users. Beyond that, I want this to also be a space where Restaurants can share some of their iconic and classic recipes and an everyday person, or hobbyist cook can tweak and adapt said recipe to meet any criteria they might find useful. 
 
-## Install Info
-
-
-
 
 ## Tech Stack
 

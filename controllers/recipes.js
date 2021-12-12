@@ -8,6 +8,7 @@ const router = express.Router()
 
 router.get('/all', (req, res)=>{
     db.recipe.findAll()
+    
     .then((recipes) =>{
         res.render('recipes/index', {recipes: recipes})
     }).catch((error)=>{

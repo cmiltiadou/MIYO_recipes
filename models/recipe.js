@@ -24,7 +24,6 @@ module.exports = (sequelize, DataTypes) => {
     ingredients: DataTypes.TEXT,
     method: DataTypes.TEXT,
     userId: DataTypes.INTEGER,
-    commentId: DataTypes.INTEGER,
     isRestaurant: DataTypes.BOOLEAN,
     restaurantName: DataTypes.STRING
   }, {

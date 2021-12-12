@@ -38,12 +38,6 @@ module.exports = {
       userId: {
         type: Sequelize.INTEGER
       },
-      commentId: {
-        type: Sequelize.INTEGER
-      },
-      collectionId: {
-        type: Sequelize.INTEGER
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

@@ -5,6 +5,7 @@ let recipe = require('../models/recipe')
 const axios = require('axios')
 const router = express.Router() 
 
+
 router.get('/all', (req, res)=>{
     db.recipe.findAll()
     .then((recipes) =>{
@@ -46,14 +47,32 @@ router.post('/', (req, res) => {
       res.status(400).render('main/404')
     })
 })})
+/// create a POST route to add a comment to a specific recipe
+router.post('/:id/comments', (req, res) => {
+    db.comment.create({
+        author: res.locals.currentUser.name,
+        content: req.body.comment,
+        recipeId: req.params.id,
+        userId: res.locals.currentUser.id
+    })
+    .then((post) => {
+      res.redirect('/')
+    })
+    .catch((error) => {
+      res.status(400).render('main/404')
+    })
+})
 
 //SHOW route to render a formatted version of a specific recipe 
 router.get('/:id', (req, res) => {
     db.recipe.findOne({
-        where: {id: req.params.id}
+        where: {id: req.params.id},
+        include: [db.comment]
+        
     })
     .then (recipe => {
         res.render('recipes/show', {
+            recipe: recipe,
             name: recipe.name,
             difficulty: recipe.difficulty,
             ingredients: recipe.ingredients,
@@ -62,7 +81,8 @@ router.get('/:id', (req, res) => {
             preptime: recipe.preptime,
             cooktime: recipe.cooktime,
             isRestaurant: recipe.isRestaurant,
-            restaurantName: recipe.restaurantName
+            restaurantName: recipe.restaurantName,
+            id: recipe.id,
         })
     })
     .catch (error => {

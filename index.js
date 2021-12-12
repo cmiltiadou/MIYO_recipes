@@ -62,7 +62,8 @@ app.get('/', (req, res)=>{
             preptime: recipe.preptime,
             cooktime: recipe.cooktime,
             isRestaurant: recipe.isRestaurant,
-            restaurantName: recipe.restaurantName
+            restaurantName: recipe.restaurantName,
+            id: recipe.id
         })
     })
       .catch(err => {

@@ -2,7 +2,7 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-      return queryInterface.bulkInsert('comments', [{
+      return queryInterface.bulkInsert('comment', [{
         content: "I can finally make this at home!",
         author: "Bob",
         recipeId: 1,
@@ -13,6 +13,6 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-      return queryInterface.bulkDelete('comments', null, {});
+      return queryInterface.bulkDelete('comment', null, {});
   }
 };

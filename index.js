@@ -84,7 +84,7 @@ app.get('/profile/:id', isLoggedIn, (req, res)=>{
         res.render('profile', {recipes: recipes})
     }).catch((error)=>{
         console.log(error)
-        res.status(400).render('main/404')
+        res.status(400).render('404')
     })
 })
 

@@ -1,6 +1,33 @@
-# MIYO Recipes app
+# MIYO Recipes
 
 <a href="https://miyo-recipes.herokuapp.com/">Visit MIYO Recipes</a>
+
+<details>
+<summary>
+<small>for local install, click here!</small>
+</summary>
+<br>
+
+Requirements to run app locally:
+* Postgres
+* NPM 
+
+# Install Procedure:
+
+* in the terminal, cd into the apps main directory and run the following commands:
+  1. ``npm install`` to install dependencies
+  2. ```createdb cookbook_app_developement``` followed by ```sequelize init``` to create main database and initialize sequelize
+  3. ```sequelize db:migrate``` to create database tables and ```sequelize db:seed:all``` to seed data and prepare app for use
+
+* Run ```node index.js``` to start the server and point your browser to http://localhost:3000/ and start uploading your recipes!
+
+
+
+</details>
+
+----
+
+<br>
 
 The "MIYO" in MIYO Recipes stands for 'Make It Your Own'. The idea being that users will be able to find user and restaurant uploaded recipes, add them to their own collection, but also edit and expand upon the originals. Think of it like forking and cloning a recipe and being able to submit your changes. The original recipe will always remain but will also be linked to any recipes tweaked by other users. Beyond that, I want this to also be a space where Restaurants can share some of their iconic and classic recipes and an everyday person, or hobbyist cook can tweak and adapt said recipe to meet any criteria they might find useful. 
 

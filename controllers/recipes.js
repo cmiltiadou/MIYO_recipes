@@ -12,7 +12,7 @@ router.get('/all', (req, res)=>{
     .then((recipes) =>{
         res.render('recipes/index', {recipes: recipes})
     }).catch((error)=>{
-        res.status(400).render('main/404') 
+        res.status(400).render('404') 
     })
 })
 
@@ -22,7 +22,7 @@ router.get('/new', (req, res) => {
       res.render('recipes/new')  
     })  
     .catch((error) => {
-      res.status(400).render('main/404')  
+      res.status(400).render('404')  
     })  
   })    
 
@@ -45,7 +45,7 @@ router.post('/', (req, res) => {
       res.redirect('recipes/new')
     })
     .catch((error) => {
-      res.status(400).render('main/404')
+      res.status(400).render('404')
     })
 })})
 /// create a POST route to add a comment to a specific recipe
@@ -60,7 +60,7 @@ router.post('/:id/comments', (req, res) => {
       res.redirect('/')
     })
     .catch((error) => {
-      res.status(400).render('main/404')
+      res.status(400).render('404')
     })
 })
 

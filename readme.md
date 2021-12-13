@@ -21,6 +21,14 @@ Requirements to run app locally:
 
 * Run ```node index.js``` to start the server and point your browser to http://localhost:3000/ and start uploading your recipes!
 
+* To use the google places API features of the app you will need to acquire an API key. Use these instructions as a reference: https://developers.google.com/maps/documentation/javascript/places 
+
+* once you acquire your key you can create a .env file and add your key using the following format 
+
+```js
+MAPSAPIKEY=<yourAPIkey>
+```
+
 
 
 </details>
